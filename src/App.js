@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
 
-Class App extends Component {
+class App extends Component {
   render() {
     return (
       <div className="App">
