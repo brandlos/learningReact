@@ -10,6 +10,7 @@ import { PROMOTIONS } from "../shared/promotions";
 import Home from "./HomeComponent";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Contact from "./ContactComponent";
+import About from "./AboutComponent";
 
 class Main extends Component {
   constructor(props) {
@@ -57,6 +58,7 @@ class Main extends Component {
         <Header />
         <Switch>
           <Route path="/home" component={HomePage} />
+          <Route path="/aboutus" component={About} />
           <Route
             exact
             path="/directory"
