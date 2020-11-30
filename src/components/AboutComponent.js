@@ -50,7 +50,7 @@ function About() {
         </div>
         <div className="col-sm-6">
           <Card>
-            <CardHeader className="bg-primary text-white">
+            <CardHeader className="bg-warning">
               <h3>Facts At a Glance</h3>
             </CardHeader>
             <CardBody>
