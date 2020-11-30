@@ -24,7 +24,7 @@ class Contact extends Component {
       feedback: "",
     };
 
-    this.handleInputchange = this.handleInputChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -104,7 +104,7 @@ class Contact extends Component {
                     name="firstName"
                     placeholder="first name"
                     value={this.state.firstName}
-                    onchange={this.handleInputChange}
+                    onChange={this.handleInputChange}
                   />
                 </Col>
               </FormGroup>
@@ -148,7 +148,7 @@ class Contact extends Component {
                     id="email"
                     name="email"
                     placeholder="email address"
-                    value={this.state.phoneNum}
+                    value={this.state.email}
                     onChange={this.handleInputChange}
                   />
                 </Col>
@@ -166,6 +166,17 @@ class Contact extends Component {
                       <strong>May we contact you?</strong>
                     </Label>
                   </FormGroup>
+                </Col>
+                <Col md={4}>
+                  <Input
+                    type="select"
+                    name="contactType"
+                    value={this.state.contactType}
+                    onChange={this.handleInputChange}
+                  >
+                    <option>By Phone</option>
+                    <option>By Email</option>
+                  </Input>
                 </Col>
               </FormGroup>
               <FormGroup row>
