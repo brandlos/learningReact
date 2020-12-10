@@ -12,7 +12,7 @@ import About from "./AboutComponent";
 const mapStateToProps = (state) => {
   return {
     campsites: state.campsites,
-    commments: state.comments,
+    comments: state.comments,
     partners: state.partners,
     promotions: state.promotions,
   };
