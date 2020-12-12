@@ -53,7 +53,7 @@ class CommentForm extends Component {
     this.props.postComment(
       this.props.campsiteId,
       values.rating,
-      values.author,
+      values.username,
       values.text
     );
   }
@@ -134,12 +134,12 @@ class CommentForm extends Component {
                 </Col>
               </Row>
               <Row className="form-group">
-                <Label htmlFor="comment" md={2}>
+                <Label htmlFor="text" md={2}>
                   Comment
                 </Label>
                 <Col md={10}>
                   <Control.textarea
-                    model=".comment"
+                    model=".text"
                     id="comment"
                     rows="10"
                     className="form-control"
@@ -193,13 +193,17 @@ function RenderComments({ comments, postComment, campsiteId }) {
                 <div>
                   <p>
                     {comment.text}
-                    <br />
-                    -- {comment.author},{" "}
-                    {new Intl.DateTimeFormat("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "2-digit",
-                    }).format(new Date(Date.parse(comment.date)))}
+                    <br />-
+                    <i>
+                      <small>
+                        Posted by <strong>{comment.author}</strong> on{" "}
+                        {new Intl.DateTimeFormat("en-US", {
+                          year: "numeric",
+                          month: "short",
+                          day: "2-digit",
+                        }).format(new Date(Date.parse(comment.date)))}
+                      </small>
+                    </i>
                   </p>
                 </div>
               </Fade>
