@@ -8,19 +8,11 @@ import {
   Media,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { PARTNERS } from "../shared/partners";
+import { Loading } from "./LoadingComponent";
+import { baseUrl } from "../shared/baseUrl";
+import { Stagger, Fade } from "react-animation-components";
 
-/* WE CHANGED THIS PART OF THE CODE TO INCLUDE partners.js
-   SO THE OBJECT ARRAY WAS ACCESSIBLE HERE*/
-function About() {
-  const partners = PARTNERS.map((partner) => {
-    return (
-      <Media tag="li" key={partner.id}>
-        <RenderPartner partner={partner} />
-      </Media>
-    );
-  });
-
+function About(props) {
   return (
     <div className="container">
       <div className="row">
@@ -91,7 +83,7 @@ function About() {
           <h3>Community Partners</h3>
         </div>
         <div className="col mt-4">
-          <Media list>{partners}</Media>
+          <PartnerList partners={props.partners} />
         </div>
       </div>
     </div>
@@ -104,8 +96,8 @@ function RenderPartner({ partner }) {
       <>
         <Media
           object="true"
-          src={partner.image}
-          alt={partner.name}
+          src={baseUrl + partner.image}
+          alt={baseUrl + partner.name}
           width="150"
         />
         <Media body="true" className="ml-5 mb-4">
@@ -115,6 +107,42 @@ function RenderPartner({ partner }) {
       </>
     );
   } else return <div />;
+}
+
+function PartnerList(props) {
+  const partners = props.partners.partners.map((partner) => {
+    return (
+      <Fade in key={partner.id}>
+        <Media tag="li">
+          <RenderPartner partner={partner} />
+        </Media>
+      </Fade>
+    );
+  });
+
+  if (props.partners.partners.isLoading) {
+    return <Loading />;
+  }
+  if (props.partners.partners.errMess) {
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col">{props.errMess}</div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <Media list>
+            <Stagger in>{partners}</Stagger>
+          </Media>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default About;
